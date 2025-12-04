@@ -3,7 +3,16 @@ import string
 from typing import Dict
 
 
-def count_characters(text: str):
+def count_characters(text: str) -> Dict[str, int]:
+    """Count character categories in a text.
+
+    Args:
+        text: the string to analyze
+
+    Returns:
+        A dict with keys:
+            'total','upper','lower','punctuation','spaces','digits'.
+    """
     upper_count = 0
     lower_count = 0
     punctuation_count = 0
@@ -33,7 +42,12 @@ def count_characters(text: str):
     }
 
 
-def display_counts(counts: Dict[str, int]):
+def display_counts(counts: Dict[str, int]) -> None:
+    """Print the counts in the format required by the exercise.
+
+    Args:
+        counts: dictionary produced by :func:`count_characters`.
+    """
     print(f"The text contains {counts['total']} characters:")
     print(f"{counts['upper']} upper letters")
     print(f"{counts['lower']} lower letters")
@@ -42,8 +56,13 @@ def display_counts(counts: Dict[str, int]):
     print(f"{counts['digits']} digits")
 
 
-def get_text_from_args(argv: list):
-    # ! If user explicitly asks for tests, return a sentinel
+def get_text_from_args(argv: list) -> str:
+    """Return the text to analyze from command-line or prompt the user.
+
+    Special case: if argv contains ``--test`` as single argument, returns a
+    sentinel string used to run internal tests.
+    """
+    # If user explicitly asks for tests, return a sentinel
     if len(argv) == 2 and argv[1] == "--test":
         return "__RUN_TESTS__"
 
@@ -59,7 +78,12 @@ def get_text_from_args(argv: list):
         return ""
 
 
-def main():
+def main() -> None:
+    """Program entry point: parse args, run tests or display counts.
+
+    Catches AssertionError and general exceptions to avoid uncaught errors
+    as required by the exercise rules.
+    """
     try:
         text = get_text_from_args(sys.argv)
         if text == "__RUN_TESTS__":
@@ -71,10 +95,12 @@ def main():
     except AssertionError as e:
         print(f"AssertionError: {e}")
     except Exception as e:
+        # catch-all to satisfy the rule that no exception escapes
         print(f"Error: {e}")
 
 
-def run_tests():
+def run_tests() -> None:
+    """Run a few sample texts and print their counts (simple smoke tests)."""
     samples = [
         "Hello World!",
         "Python 3.0, released in 2008.",
@@ -84,7 +110,7 @@ def run_tests():
         print(f"Sample: {s}")
         counts = count_characters(s)
         display_counts(counts)
-        print('')
+        print("")
 
 
 if __name__ == "__main__":
