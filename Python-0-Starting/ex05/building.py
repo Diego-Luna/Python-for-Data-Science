@@ -6,9 +6,6 @@ from typing import Dict
 def count_characters(text: str) -> Dict[str, int]:
     """Count character categories in a text.
 
-    Args:
-        text: the string to analyze
-
     Returns:
         A dict with keys:
             'total','upper','lower','punctuation','spaces','digits'.
@@ -58,9 +55,6 @@ def display_counts(counts: Dict[str, int]) -> None:
 
 def get_text_from_args(argv: list) -> str:
     """Return the text to analyze from command-line or prompt the user.
-
-    Special case: if argv contains ``--test`` as single argument, returns a
-    sentinel string used to run internal tests.
     """
     # If user explicitly asks for tests, return a sentinel
     if len(argv) == 2 and argv[1] == "--test":
@@ -79,11 +73,6 @@ def get_text_from_args(argv: list) -> str:
 
 
 def main() -> None:
-    """Program entry point: parse args, run tests or display counts.
-
-    Catches AssertionError and general exceptions to avoid uncaught errors
-    as required by the exercise rules.
-    """
     try:
         text = get_text_from_args(sys.argv)
         if text == "__RUN_TESTS__":
@@ -95,12 +84,11 @@ def main() -> None:
     except AssertionError as e:
         print(f"AssertionError: {e}")
     except Exception as e:
-        # catch-all to satisfy the rule that no exception escapes
         print(f"Error: {e}")
 
 
 def run_tests() -> None:
-    """Run a few sample texts and print their counts (simple smoke tests)."""
+    """Run a few sample texts"""
     samples = [
         "Hello World!",
         "Python 3.0, released in 2008.",

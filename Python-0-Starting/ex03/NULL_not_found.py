@@ -1,4 +1,3 @@
-
 def NULL_not_found(object: any) -> int:
     # * None type
     if object is None:
