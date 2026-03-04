@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "Activando entorno virtual..."
-source venv/bin/activate
-echo "✓ Entorno virtual activado"
+echo "activate virtual environment..."
+source .venv/bin/activate
+echo "✓ Virtual environment activated"
 echo ""
-echo "Paquete instalado:"
+echo "Installed package:"
 pip show ft_package
 echo ""
-echo "Para desactivar: deactivate"
+echo "To deactivate: deactivate"
