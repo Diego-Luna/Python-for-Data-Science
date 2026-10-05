@@ -92,6 +92,8 @@ def main() -> None:
 
     except AssertionError as e:
         print(f"AssertionError: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
 
 
 if __name__ == "__main__":

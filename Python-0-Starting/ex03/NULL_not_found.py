@@ -1,29 +1,31 @@
 def NULL_not_found(object: any) -> int:
-    # * None type
+    """Print the object type of all types of Null.
+
+    Args:
+        object: The object to inspect.
+
+    Returns:
+        0 if a null-equivalent type is detected, 1 otherwise.
+    """
     if object is None:
         print(f"Nothing: None {type(object)}")
         return 0
-    
-    # * NaN (float)
-    if isinstance(object, float) and object != object:  # ! NaN != NaN is True
+
+    if isinstance(object, float) and object != object:
         print(f"Cheese: nan {type(object)}")
         return 0
-    
-    # * Zero (int) - check type to distinguish from False
-    if isinstance(object, int) and object == 0 and object is not False:
+
+    if type(object) is int and object == 0:
         print(f"Zero: 0 {type(object)}")
         return 0
-    
-    # * Empty string
+
     if isinstance(object, str) and object == "":
         print(f"Empty: {type(object)}")
         return 0
-    
-    # * False (bool)
+
     if isinstance(object, bool) and object is False:
         print(f"Fake: False {type(object)}")
         return 0
-    
-    # * Type not found
+
     print("Type not Found")
     return 1
