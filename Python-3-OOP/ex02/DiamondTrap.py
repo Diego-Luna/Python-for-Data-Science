@@ -10,22 +10,18 @@ class King(Baratheon, Lannister):
 
     def set_eyes(self, eyes: str) -> None:
         """Set eye color property."""
-        # * Update eye color attribute in instance dictionary
         self.__dict__["eyes"] = eyes
 
     def get_eyes(self) -> str:
         """Get eye color property."""
-        # * Retrieve eye color attribute
         return self.__dict__["eyes"]
 
     def set_hairs(self, hairs: str) -> None:
         """Set hair color property."""
-        # * Update hair color attribute in instance dictionary
         self.__dict__["hairs"] = hairs
 
     def get_hairs(self) -> str:
         """Get hair color property."""
-        # * Retrieve hair color attribute
         return self.__dict__["hairs"]
 
     eyes = property(get_eyes, set_eyes)

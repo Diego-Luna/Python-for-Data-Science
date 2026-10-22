@@ -21,6 +21,9 @@ def main() -> None:
     # ! Test division by zero
     print("---")
     v3 / 0
+    v3 * 0
+    v3 + 0
+    v3 - 0
 
 
 if __name__ == "__main__":
