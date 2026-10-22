@@ -34,7 +34,7 @@ def parse_pop(val: str | float | int) -> float:
 
 
 def main():
-    """Load population data, filter France, Belgium, and plot."""
+    """Load population data, filter France, Mexico, and plot."""
     # * Find dataset path robustly
     path = "population_total.csv"
     if not os.path.exists(path):
@@ -53,11 +53,11 @@ def main():
         print("Error: 'country' column not found in dataset.")
         return
 
-    # * Filter for France and Belgium
-    countries = ['France', 'Belgium']
+    # * Filter for France and Mexico
+    countries = ['France', 'Mexico']
     df_filtered = df[df['country'].isin(countries)]
     if df_filtered.empty:
-        print("Error: France or Belgium not found in dataset.")
+        print("Error: France or Mexico not found in dataset.")
         return
 
     # * Extract years available in columns (excluding 'country')
@@ -83,8 +83,8 @@ def main():
             val = c_row[y_col].values[0]
             pop_values.append(parse_pop(val))
 
-        # * Assign colors: Belgium (tab:blue), France (tab:green)
-        color = 'tab:blue' if country == 'Belgium' else 'tab:green'
+        # * Assign colors: Mexico (tab:blue), France (tab:green)
+        color = 'tab:blue' if country == 'Mexico' else 'tab:green'
         plt.plot(valid_years, pop_values, label=country,
                  color=color, linewidth=2)
 
